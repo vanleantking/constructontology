@@ -73,9 +73,33 @@ def construct_ontology():
 
 
         #define object property - relation
-        class has_adddress(ObjectProperty):
+        class has_city(ObjectProperty):
             domain =[Patient, Doctor, MedicalRecord]
-            range = [City, Street, State, Zip, Organization, Country, LocationOther]
+            range = [City]
+
+        class has_street(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [Street]
+
+        class has_state(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [State]
+
+        class has_organization(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [Organization]
+
+        class has_country(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [Country]
+
+        class has_locationother(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [LocationOther]
+
+        class has_zip(ObjectProperty):
+            domain =[Patient, Doctor, MedicalRecord]
+            range = [Zip]
 
         class has_age(ObjectProperty):
             domain =[Patient]
@@ -89,9 +113,17 @@ def construct_ontology():
             domain =[MedicalRecord]
             range = [Doctor]
 
-        class has_unique_ID(ObjectProperty):
+        class has_unique_IDNum(ObjectProperty):
             domain =[MedicalRecord]
-            range = [ID]
+            range = [IDNum]
+
+        class has_unique_BioID(ObjectProperty):
+            domain =[MedicalRecord]
+            range = [BioID]
+
+        class has_healthPlan(ObjectProperty):
+            domain =[MedicalRecord]
+            range = [HealthPlan]
 
         class has_contact(ObjectProperty):
             domain =[Patient, Doctor, MedicalRecord]
@@ -112,6 +144,15 @@ def construct_ontology():
         class was_recorded_for(ObjectProperty):
             domain =[MedicalRecord]
             range = [Patient]
+
+        class has_username(DataProperty):
+            domain = [MedicalRecord]
+            range = [Username]
+            
+        class was_recorded_at(ObjectProperty):
+            domain =[Patient]
+            range = [MedicalRecord]
+            inverse_property = was_recorded_for
 
         class was_treated_at(ObjectProperty):
             domain =[Patient]
@@ -136,7 +177,7 @@ def construct_ontology():
 
         class hasAge(DataProperty):
             domain = [Age]
-            range = [int]
+            range = [str]
 
         class hasDate(DataProperty):
             domain = [Date]
@@ -174,6 +215,10 @@ def construct_ontology():
             domain = [MedicalRecord]
             range = [int]
 
+        class hasRecordName(DataProperty):
+            domain = [Patient]
+            range = [int]
+
         #data properties save info to de-identifier
         class hasStartPosition(DataProperty):
             domain = [Age, Email, Fax, Phone, URL, Date, Device, Doctor, Hospital, BioID, HealthPlan, IDNum, City, Country, LocationOther,
@@ -194,11 +239,21 @@ def construct_ontology():
         if os.path.isdir(path):
             for fname in sorted(os.listdir(path)):
                 fpath = os.path.join(path, fname)
+                patientRecord = fname.split("-")[0]
                 tree = ET.parse(fpath)
                 root = tree.getroot()
                 tags = root.find('TAGS')
                 with onto:
+                    patientRecords = None
+                    for patient in onto.Patient.instances():
+                        if patientRecord == patient.name:
+                            patientRecords = patient
+
+                    if patientRecords is None:
+                        patientRecords = onto.Patient(patientRecord)
+                        patientRecords.hasRecordName = [patientRecord]
                     medicalRecord = onto.MedicalRecord(fname)
+                    patientRecords.was_recorded_at.append(medicalRecord)
                     medicalRecord.hasSerialize = [fname]
                 for child in tags.getiterator():
                     get_ontology_type(onto, medicalRecord, child)

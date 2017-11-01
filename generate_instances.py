@@ -105,7 +105,7 @@ def generateBioID(onto, medicalRecord, info):
 		bioID.hasUniqueID = [info.attrib.get('text')]
 		bioID.hasStartPosition = [info.attrib.get('start')]
 		bioID.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_unique_ID.append(bioID)
+		medicalRecord.has_unique_BioID.append(bioID)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -116,7 +116,7 @@ def generateHealthPlan(onto, medicalRecord, info):
 		healthplan.hasUniqueID = [info.attrib.get('text')]
 		healthplan.hasStartPosition = [info.attrib.get('start')]
 		healthplan.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_unique_ID.append(healthplan)
+		medicalRecord.has_healthPlan.append(healthplan)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -127,7 +127,7 @@ def generateIDNum(onto, medicalRecord, info):
 		idNum.hasUniqueID = [info.attrib.get('text')]
 		idNum.hasStartPosition = [info.attrib.get('start')]
 		idNum.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_unique_ID.append(idNum)
+		medicalRecord.has_unique_IDNum.append(idNum)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -138,7 +138,7 @@ def generateCity(onto, medicalRecord, info):
 		city.hasLocation = [info.attrib.get('text')]
 		city.hasStartPosition = [info.attrib.get('start')]
 		city.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(city)
+		medicalRecord.has_city.append(city)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -149,7 +149,7 @@ def generateCountry(onto, medicalRecord, info):
 		country.hasLocation = [info.attrib.get('text')]
 		country.hasStartPosition = [info.attrib.get('start')]
 		country.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(country)
+		medicalRecord.has_country.append(country)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -160,7 +160,7 @@ def generateLocationOther(onto, medicalRecord, info):
 		locationOther.hasLocation = [info.attrib.get('text')]
 		locationOther.hasStartPosition = [info.attrib.get('start')]
 		locationOther.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(locationOther)
+		medicalRecord.has_locationother.append(locationOther)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -171,7 +171,7 @@ def generateOrganization(onto, medicalRecord, info):
 		organization.hasLocation = [info.attrib.get('text')]
 		organization.hasStartPosition = [info.attrib.get('start')]
 		organization.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(organization)
+		medicalRecord.has_organization.append(organization)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -182,7 +182,7 @@ def generateState(onto, medicalRecord, info):
 		state.hasLocation = [info.attrib.get('text')]
 		state.hasStartPosition = [info.attrib.get('start')]
 		state.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(state)
+		medicalRecord.has_state.append(state)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -193,7 +193,7 @@ def generateStreet(onto, medicalRecord, info):
 		street.hasLocation = [info.attrib.get('text')]
 		street.hasStartPosition = [info.attrib.get('start')]
 		street.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(street)
+		medicalRecord.has_street.append(street)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -204,7 +204,7 @@ def generateZip(onto, medicalRecord, info):
 		zipNumber.hasLocation = [info.attrib.get('text')]
 		zipNumber.hasStartPosition = [info.attrib.get('start')]
 		zipNumber.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.has_adddress.append(zipNumber)
+		medicalRecord.has_zip.append(zipNumber)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -220,11 +220,10 @@ def generateMedicalRecord(onto, medicalRecord, info):
 #Generate instance Patient
 def generatePatient(onto, medicalRecord, info):
 	with onto:
-		patient = onto.Patient(info.attrib.get('text'))
-		patient.hasName = [info.attrib.get('text')]
+		patient = medicalRecord.was_recorded_for[0]
+		patient.hasName.append(info.attrib.get('text'))
 		patient.hasStartPosition = [info.attrib.get('start')]
 		patient.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.was_recorded_for.append(patient)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
@@ -235,7 +234,7 @@ def generateUsername(onto, medicalRecord, info):
 		username.hasName = [info.attrib.get('text')]
 		username.hasStartPosition = [info.attrib.get('start')]
 		username.hasEndPosition = [info.attrib.get('end')]
-		medicalRecord.was_recorded_for.append(username)
+		medicalRecord.has_username.append(username)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
