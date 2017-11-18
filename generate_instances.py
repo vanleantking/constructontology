@@ -226,7 +226,6 @@ def generatePatient(onto, medicalRecord, info):
 		patient.hasStartPosition = [info.attrib.get('start')]
 		patient.hasEndPosition = [info.attrib.get('end')]
 		patientRecord.have_collect_patients.append(patient)
-		medicalRecord.has_recorded_for.append(patient)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
