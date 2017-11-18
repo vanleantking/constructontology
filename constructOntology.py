@@ -37,6 +37,8 @@ def construct_ontology():
             pass
         class MedicalRecord(Thing):
             pass
+        class PatientRecord(Thing):
+            pass
 
         class Phone(Contact):
             pass
@@ -141,18 +143,18 @@ def construct_ontology():
             domain =[MedicalRecord]
             range = [Date]
 
-        class was_recorded_for(ObjectProperty):
+        class recorded_on_patient_record(ObjectProperty):
             domain =[MedicalRecord]
-            range = [Patient]
+            range = [PatientRecord]
 
         class has_username(DataProperty):
             domain = [MedicalRecord]
             range = [Username]
             
         class was_recorded_at(ObjectProperty):
-            domain =[Patient]
+            domain =[PatientRecord]
             range = [MedicalRecord]
-            inverse_property = was_recorded_for
+            inverse_property = recorded_on_patient_record
 
         class was_treated_at(ObjectProperty):
             domain =[Patient]
@@ -161,6 +163,14 @@ def construct_ontology():
         class was_use_device(ObjectProperty):
             domain =[MedicalRecord]
             range = [Device]
+
+        class have_collect_patients(ObjectProperty):
+            domain =[PatientRecord]
+            range = [Patient]
+
+        class has_recorded_for(ObjectProperty):
+            domain = [MedicalRecord]
+            range = [Patient]
 
         #define data property
         class deviceID(DataProperty):
@@ -216,7 +226,7 @@ def construct_ontology():
             range = [int]
 
         class hasRecordName(DataProperty):
-            domain = [Patient]
+            domain = [PatientRecord]
             range = [int]
 
         #data properties save info to de-identifier
@@ -239,19 +249,19 @@ def construct_ontology():
         if os.path.isdir(path):
             for fname in sorted(os.listdir(path)):
                 fpath = os.path.join(path, fname)
-                patientRecord = fname.split("-")[0]
+                patientRecordName = fname.split("-")[0]
                 tree = ET.parse(fpath)
                 root = tree.getroot()
                 tags = root.find('TAGS')
                 with onto:
                     patientRecords = None
-                    for patient in onto.Patient.instances():
-                        if patientRecord == patient.name:
-                            patientRecords = patient
+                    for patientRecord in onto.PatientRecord.instances():
+                        if patientRecordName == patientRecord.name:
+                            patientRecords = patientRecord
 
                     if patientRecords is None:
-                        patientRecords = onto.Patient(patientRecord)
-                        patientRecords.hasRecordName = [patientRecord]
+                        patientRecords = onto.PatientRecord(patientRecordName)
+                        patientRecords.hasRecordName = [patientRecordName]
                     medicalRecord = onto.MedicalRecord(fname)
                     patientRecords.was_recorded_at.append(medicalRecord)
                     medicalRecord.hasSerialize = [fname]

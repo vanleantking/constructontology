@@ -220,10 +220,13 @@ def generateMedicalRecord(onto, medicalRecord, info):
 #Generate instance Patient
 def generatePatient(onto, medicalRecord, info):
 	with onto:
-		patient = medicalRecord.was_recorded_for[0]
-		patient.hasName.append(info.attrib.get('text'))
+		patientRecord = medicalRecord.recorded_on_patient_record[0]
+		patient = onto.Patient(info.attrib.get('text'))
+		patient.hasName = [info.attrib.get('text')]
 		patient.hasStartPosition = [info.attrib.get('start')]
 		patient.hasEndPosition = [info.attrib.get('end')]
+		patientRecord.have_collect_patients.append(patient)
+		medicalRecord.has_recorded_for.append(patient)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
