@@ -165,7 +165,7 @@ def construct_ontology():
             range = [Device]
 
         class have_collect_patients(ObjectProperty):
-            domain =[PatientRecord]
+            domain =[PatientRecord, MedicalRecord]
             range = [Patient]
 
         class has_recorded_for(ObjectProperty):

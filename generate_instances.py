@@ -3,8 +3,9 @@ onto = get_ontology("http://test.org/newemr.owl")
 
 #Generate instance Age
 def generateAge(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		age = onto.Age(info.attrib.get('text'))
+		age = onto.Age(nameInstance)
 		age.hasAge = [info.attrib.get('text')]
 		age.hasStartPosition = [info.attrib.get('start')]
 		age.hasEndPosition = [info.attrib.get('end')]
@@ -14,8 +15,9 @@ def generateAge(onto, medicalRecord, info):
 
 #Generate instance Email
 def generateEmail(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		email = onto.Email(info.attrib.get('text'))
+		email = onto.Email(nameInstance)
 		email.emailAddress = [info.attrib.get('text')]
 		email.hasStartPosition = [info.attrib.get('start')]
 		email.hasEndPosition = [info.attrib.get('end')]
@@ -25,8 +27,9 @@ def generateEmail(onto, medicalRecord, info):
 
 #Generate instance Phone
 def generatePhone(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		phone = onto.Phone(info.attrib.get('text'))
+		phone = onto.Phone(nameInstance)
 		phone.phoneNumber = [info.attrib.get('text')]
 		phone.hasStartPosition = [info.attrib.get('start')]
 		phone.hasEndPosition = [info.attrib.get('end')]
@@ -35,8 +38,9 @@ def generatePhone(onto, medicalRecord, info):
 
 #Generate instance URL
 def generateURL(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		url = onto.URL(info.attrib.get('text'))
+		url = onto.URL(nameInstance)
 		url.urlAddress = [info.attrib.get('text')]
 		url.hasStartPosition = [info.attrib.get('start')]
 		url.hasEndPosition = [info.attrib.get('end')]
@@ -45,8 +49,9 @@ def generateURL(onto, medicalRecord, info):
 
 #Generate instance Fax
 def generateFax(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		fax = onto.Fax(info.attrib.get('text'))
+		fax = onto.Fax(nameInstance)
 		fax.faxNumber = [info.attrib.get('text')]
 		fax.hasStartPosition = [info.attrib.get('start')]
 		fax.hasEndPosition = [info.attrib.get('end')]
@@ -56,8 +61,9 @@ def generateFax(onto, medicalRecord, info):
 
 #Generate instance Date
 def generateDate(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		date = onto.Date(info.attrib.get('text'))
+		date = onto.Date(nameInstance)
 		date.hasDate = [info.attrib.get('text')]
 		date.hasStartPosition = [info.attrib.get('start')]
 		date.hasEndPosition = [info.attrib.get('end')]
@@ -67,8 +73,9 @@ def generateDate(onto, medicalRecord, info):
 
 #Generate instance Device
 def generateDevice(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		device = onto.Device(info.attrib.get('text'))
+		device = onto.Device(nameInstance)
 		device.deviceID = [info.attrib.get('text')]
 		device.hasStartPosition = [info.attrib.get('start')]
 		device.hasEndPosition = [info.attrib.get('end')]
@@ -78,8 +85,9 @@ def generateDevice(onto, medicalRecord, info):
 
 #Generate instance Doctor
 def generateDoctor(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		doctor = onto.Doctor(info.attrib.get('text'))
+		doctor = onto.Doctor(nameInstance)
 		doctor.hasName = [info.attrib.get('text')]
 		doctor.hasStartPosition = [info.attrib.get('start')]
 		doctor.hasEndPosition = [info.attrib.get('end')]
@@ -89,8 +97,9 @@ def generateDoctor(onto, medicalRecord, info):
 
 #Generate instance Hospital
 def generateHospital(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		hospital = onto.Hospital(info.attrib.get('text'))
+		hospital = onto.Hospital(nameInstance)
 		hospital.hasName = [info.attrib.get('text')]
 		hospital.hasStartPosition = [info.attrib.get('start')]
 		hospital.hasEndPosition = [info.attrib.get('end')]
@@ -100,8 +109,9 @@ def generateHospital(onto, medicalRecord, info):
 
 #Generate instance BioID
 def generateBioID(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		bioID = onto.BioID(info.attrib.get('text'))
+		bioID = onto.BioID(nameInstance)
 		bioID.hasUniqueID = [info.attrib.get('text')]
 		bioID.hasStartPosition = [info.attrib.get('start')]
 		bioID.hasEndPosition = [info.attrib.get('end')]
@@ -111,8 +121,9 @@ def generateBioID(onto, medicalRecord, info):
 
 #Generate instance HealthPlan
 def generateHealthPlan(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		healthplan = onto.HealthPlan(info.attrib.get('text'))
+		healthplan = onto.HealthPlan(nameInstance)
 		healthplan.hasUniqueID = [info.attrib.get('text')]
 		healthplan.hasStartPosition = [info.attrib.get('start')]
 		healthplan.hasEndPosition = [info.attrib.get('end')]
@@ -122,8 +133,9 @@ def generateHealthPlan(onto, medicalRecord, info):
 
 #Generate instance IDNum
 def generateIDNum(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		idNum = onto.IDNum(info.attrib.get('text'))
+		idNum = onto.IDNum(nameInstance)
 		idNum.hasUniqueID = [info.attrib.get('text')]
 		idNum.hasStartPosition = [info.attrib.get('start')]
 		idNum.hasEndPosition = [info.attrib.get('end')]
@@ -133,8 +145,9 @@ def generateIDNum(onto, medicalRecord, info):
 
 #Generate instance City
 def generateCity(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		city = onto.City(info.attrib.get('text'))
+		city = onto.City(nameInstance)
 		city.hasLocation = [info.attrib.get('text')]
 		city.hasStartPosition = [info.attrib.get('start')]
 		city.hasEndPosition = [info.attrib.get('end')]
@@ -144,8 +157,9 @@ def generateCity(onto, medicalRecord, info):
 
 #Generate instance Country
 def generateCountry(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		country = onto.Country(info.attrib.get('text'))
+		country = onto.Country(nameInstance)
 		country.hasLocation = [info.attrib.get('text')]
 		country.hasStartPosition = [info.attrib.get('start')]
 		country.hasEndPosition = [info.attrib.get('end')]
@@ -155,8 +169,9 @@ def generateCountry(onto, medicalRecord, info):
 
 #Generate instance LocationOther
 def generateLocationOther(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		locationOther = onto.LocationOther(info.attrib.get('text'))
+		locationOther = onto.LocationOther(nameInstance)
 		locationOther.hasLocation = [info.attrib.get('text')]
 		locationOther.hasStartPosition = [info.attrib.get('start')]
 		locationOther.hasEndPosition = [info.attrib.get('end')]
@@ -166,8 +181,9 @@ def generateLocationOther(onto, medicalRecord, info):
 
 #Generate instance Organization
 def generateOrganization(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		organization = onto.Organization(info.attrib.get('text'))
+		organization = onto.Organization(nameInstance)
 		organization.hasLocation = [info.attrib.get('text')]
 		organization.hasStartPosition = [info.attrib.get('start')]
 		organization.hasEndPosition = [info.attrib.get('end')]
@@ -177,8 +193,9 @@ def generateOrganization(onto, medicalRecord, info):
 
 #Generate instance State
 def generateState(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		state = onto.State(info.attrib.get('text'))
+		state = onto.State(nameInstance)
 		state.hasLocation = [info.attrib.get('text')]
 		state.hasStartPosition = [info.attrib.get('start')]
 		state.hasEndPosition = [info.attrib.get('end')]
@@ -188,8 +205,9 @@ def generateState(onto, medicalRecord, info):
 
 #Generate instance Street
 def generateStreet(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		street = onto.Street(info.attrib.get('text'))
+		street = onto.Street(nameInstance)
 		street.hasLocation = [info.attrib.get('text')]
 		street.hasStartPosition = [info.attrib.get('start')]
 		street.hasEndPosition = [info.attrib.get('end')]
@@ -199,8 +217,9 @@ def generateStreet(onto, medicalRecord, info):
 
 #Generate instance Zip
 def generateZip(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		zipNumber = onto.Zip(info.attrib.get('text'))
+		zipNumber = onto.Zip(nameInstance)
 		zipNumber.hasLocation = [info.attrib.get('text')]
 		zipNumber.hasStartPosition = [info.attrib.get('start')]
 		zipNumber.hasEndPosition = [info.attrib.get('end')]
@@ -219,20 +238,23 @@ def generateMedicalRecord(onto, medicalRecord, info):
 
 #Generate instance Patient
 def generatePatient(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
 		patientRecord = medicalRecord.recorded_on_patient_record[0]
-		patient = onto.Patient(info.attrib.get('text'))
+		patient = onto.Patient(nameInstance)
 		patient.hasName = [info.attrib.get('text')]
 		patient.hasStartPosition = [info.attrib.get('start')]
 		patient.hasEndPosition = [info.attrib.get('end')]
 		patientRecord.have_collect_patients.append(patient)
+		medicalRecord.have_collect_patients.append(patient)
 		
 	onto.save(file="newemr.owl", format = "rdfxml")
 
 #Generate instance Username
 def generateUsername(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		username = onto.Username(info.attrib.get('text'))
+		username = onto.Username(nameInstance)
 		username.hasName = [info.attrib.get('text')]
 		username.hasStartPosition = [info.attrib.get('start')]
 		username.hasEndPosition = [info.attrib.get('end')]
@@ -242,8 +264,9 @@ def generateUsername(onto, medicalRecord, info):
 
 #Generate instance Profession
 def generateProfession(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		profession = onto.Profession(info.attrib.get('text'))
+		profession = onto.Profession(nameInstance)
 		profession.jobName = [info.attrib.get('text')]
 		profession.hasStartPosition = [info.attrib.get('start')]
 		profession.hasEndPosition = [info.attrib.get('end')]
