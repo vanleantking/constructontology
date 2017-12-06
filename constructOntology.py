@@ -72,6 +72,8 @@ def construct_ontology():
             pass
         class IDNum(ID):
             pass
+        class MedicalRecordID(ID):
+            pass
 
 
         #define object property - relation
@@ -172,6 +174,12 @@ def construct_ontology():
             domain = [MedicalRecord]
             range = [Patient]
 
+        class has_medical_record_id(ObjectProperty):
+            domain = [MedicalRecord]
+            range = [MedicalRecordID]
+
+
+
         #define data property
         class deviceID(DataProperty):
             domain = [Device]
@@ -198,7 +206,7 @@ def construct_ontology():
             range = [str]
 
         class hasMedicalRecordID(DataProperty):
-            domain = [MedicalRecord]
+            domain = [MedicalRecordID]
             range = [str]
 
         class hasLocation(DataProperty):
@@ -267,6 +275,8 @@ def construct_ontology():
                     medicalRecord.hasSerialize = [fname]
                 for child in tags.getiterator():
                     get_ontology_type(onto, medicalRecord, child)
+                    
+    onto.save(file="newemr.owl", format = "rdfxml")
     
 
 def get_ontology_type(onto, medicalRecord, info):
@@ -285,7 +295,7 @@ def get_ontology_type(onto, medicalRecord, info):
         "IDNUM": "generateIDNum",
         "CITY": "generateCity",
         "COUNTRY": "generateCountry",
-        "LOCATIONOTHER": "generateLocationOther",
+        "LOCATION-OTHER": "generateLocationOther",
         "ORGANIZATION": "generateOrganization",
         "STATE": "generateState",
         "STREET": "generateStreet",

@@ -10,7 +10,7 @@ def generateAge(onto, medicalRecord, info):
 		age.hasStartPosition = [info.attrib.get('start')]
 		age.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_record_at_age.append(age)
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 
 #Generate instance Email
@@ -23,7 +23,7 @@ def generateEmail(onto, medicalRecord, info):
 		email.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_contact.append(email)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Phone
 def generatePhone(onto, medicalRecord, info):
@@ -34,7 +34,7 @@ def generatePhone(onto, medicalRecord, info):
 		phone.hasStartPosition = [info.attrib.get('start')]
 		phone.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_contact.append(phone)
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance URL
 def generateURL(onto, medicalRecord, info):
@@ -45,7 +45,7 @@ def generateURL(onto, medicalRecord, info):
 		url.hasStartPosition = [info.attrib.get('start')]
 		url.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_contact.append(url)
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Fax
 def generateFax(onto, medicalRecord, info):
@@ -56,7 +56,7 @@ def generateFax(onto, medicalRecord, info):
 		fax.hasStartPosition = [info.attrib.get('start')]
 		fax.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_contact.append(fax)
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 
 #Generate instance Date
@@ -69,7 +69,7 @@ def generateDate(onto, medicalRecord, info):
 		date.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_observation_date.append(date)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Device
 def generateDevice(onto, medicalRecord, info):
@@ -81,7 +81,7 @@ def generateDevice(onto, medicalRecord, info):
 		device.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.was_use_device.append(device)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Doctor
 def generateDoctor(onto, medicalRecord, info):
@@ -93,7 +93,7 @@ def generateDoctor(onto, medicalRecord, info):
 		doctor.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.doctor_dianose.append(doctor)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Hospital
 def generateHospital(onto, medicalRecord, info):
@@ -105,7 +105,7 @@ def generateHospital(onto, medicalRecord, info):
 		hospital.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.record_from_hospital.append(hospital)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance BioID
 def generateBioID(onto, medicalRecord, info):
@@ -117,7 +117,7 @@ def generateBioID(onto, medicalRecord, info):
 		bioID.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_unique_BioID.append(bioID)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance HealthPlan
 def generateHealthPlan(onto, medicalRecord, info):
@@ -129,7 +129,7 @@ def generateHealthPlan(onto, medicalRecord, info):
 		healthplan.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_healthPlan.append(healthplan)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance IDNum
 def generateIDNum(onto, medicalRecord, info):
@@ -141,7 +141,7 @@ def generateIDNum(onto, medicalRecord, info):
 		idNum.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_unique_IDNum.append(idNum)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance City
 def generateCity(onto, medicalRecord, info):
@@ -153,7 +153,7 @@ def generateCity(onto, medicalRecord, info):
 		city.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_city.append(city)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Country
 def generateCountry(onto, medicalRecord, info):
@@ -165,7 +165,7 @@ def generateCountry(onto, medicalRecord, info):
 		country.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_country.append(country)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance LocationOther
 def generateLocationOther(onto, medicalRecord, info):
@@ -177,7 +177,7 @@ def generateLocationOther(onto, medicalRecord, info):
 		locationOther.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_locationother.append(locationOther)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Organization
 def generateOrganization(onto, medicalRecord, info):
@@ -189,7 +189,7 @@ def generateOrganization(onto, medicalRecord, info):
 		organization.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_organization.append(organization)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance State
 def generateState(onto, medicalRecord, info):
@@ -201,7 +201,7 @@ def generateState(onto, medicalRecord, info):
 		state.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_state.append(state)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Street
 def generateStreet(onto, medicalRecord, info):
@@ -213,7 +213,7 @@ def generateStreet(onto, medicalRecord, info):
 		street.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_street.append(street)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Zip
 def generateZip(onto, medicalRecord, info):
@@ -225,16 +225,19 @@ def generateZip(onto, medicalRecord, info):
 		zipNumber.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_zip.append(zipNumber)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance MedicalRecord
 def generateMedicalRecord(onto, medicalRecord, info):
+	nameInstance = "-".join([info.attrib.get('text'), medicalRecord.name, info.attrib.get('start')])
 	with onto:
-		medicalRecord.hasMedicalRecordID = [info.attrib.get('text')]
-		medicalRecord.hasStartPosition = [info.attrib.get('start')]
-		medicalRecord.hasEndPosition = [info.attrib.get('end')]
-		
-	onto.save(file="newemr.owl", format = "rdfxml")
+		mrID = onto.MedicalRecordID(nameInstance)
+		mrID.hasMedicalRecordID = [info.attrib.get('text')]
+		mrID.hasStartPosition = [info.attrib.get('start')]
+		mrID.hasEndPosition = [info.attrib.get('end')]
+		medicalRecord.has_medical_record_id.append(mrID)
+
+	
 
 #Generate instance Patient
 def generatePatient(onto, medicalRecord, info):
@@ -248,7 +251,7 @@ def generatePatient(onto, medicalRecord, info):
 		patientRecord.have_collect_patients.append(patient)
 		medicalRecord.have_collect_patients.append(patient)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Username
 def generateUsername(onto, medicalRecord, info):
@@ -260,7 +263,7 @@ def generateUsername(onto, medicalRecord, info):
 		username.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.has_username.append(username)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
 
 #Generate instance Profession
 def generateProfession(onto, medicalRecord, info):
@@ -272,4 +275,4 @@ def generateProfession(onto, medicalRecord, info):
 		profession.hasEndPosition = [info.attrib.get('end')]
 		medicalRecord.job_position.append(profession)
 		
-	onto.save(file="newemr.owl", format = "rdfxml")
+	
